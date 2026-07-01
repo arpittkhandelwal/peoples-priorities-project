@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
-import { groq, GROQ_MODEL } from '@/lib/groq';
+import { geminiModel } from '@/lib/gemini';
 
 export async function POST(request: Request) {
   try {
@@ -45,21 +45,22 @@ Return ONLY valid JSON, no markdown, no preamble:
   "extractedLocation": "<any location detail mentioned in the text, or null>"
 }`;
 
-    // 3. Call Groq
-    const completion = await groq.chat.completions.create({
-      messages: [{ role: "user", content: prompt }],
-      model: GROQ_MODEL,
-      response_format: { type: "json_object" }
+    // 3. Call Gemini
+    const result = await geminiModel.generateContent({
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
+      generationConfig: {
+        responseMimeType: "application/json",
+      }
     });
     
-    const responseText = completion.choices[0]?.message?.content || "{}";
+    const responseText = result.response.text();
     
     let parsedResult;
     try {
       parsedResult = JSON.parse(responseText);
     } catch (e) {
-      console.error('Failed to parse Groq response', responseText);
-      throw new Error('Invalid JSON from Groq');
+      console.error('Failed to parse Gemini response', responseText, e);
+      throw new Error('Invalid JSON from Gemini');
     }
 
     // 4. Update Supabase

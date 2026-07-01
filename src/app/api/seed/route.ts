@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
-import { groq, GROQ_MODEL } from '@/lib/groq';
+import { geminiModel } from '@/lib/gemini';
 
 export async function GET(request: Request) {
   try {
@@ -16,13 +16,15 @@ Return ONLY a valid JSON array like this:
   { "raw_text": "...", "location_text": "...", "category_guess": "..." }
 ]`;
 
-    const completion = await groq.chat.completions.create({
-      messages: [{ role: "user", content: prompt }],
-      model: GROQ_MODEL,
-      response_format: { type: "json_object" }
+    // Call Gemini
+    const result = await geminiModel.generateContent({
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
+      generationConfig: {
+        responseMimeType: "application/json",
+      }
     });
     
-    const responseText = completion.choices[0]?.message?.content || "[]";
+    const responseText = result.response.text();
     
     let submissionsToSeed = [];
     try {
@@ -43,8 +45,8 @@ Return ONLY a valid JSON array like this:
         }
       }
     } catch (e) {
-      console.error('Failed to parse Groq response for seed', responseText);
-      throw new Error('Invalid JSON from Groq seed');
+      console.error('Failed to parse Gemini response for seed', responseText, e);
+      throw new Error('Invalid JSON from Gemini seed');
     }
 
     const inserted = [];
