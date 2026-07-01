@@ -79,7 +79,7 @@ export default function Home() {
             Citizen Intake
             <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
           </Link>
-          <Link href="/dashboard" className="group relative px-8 py-5 bg-white/80 text-slate-900 font-black rounded-2xl hover:bg-white hover:scale-105 hover:-translate-y-2 transition-all duration-300 flex items-center gap-3 w-full sm:w-auto justify-center text-lg border border-slate-200 backdrop-blur-md shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+          <Link href="/dashboard" className="group relative overflow-hidden px-8 py-5 bg-white/80 text-slate-900 font-black rounded-2xl hover:bg-white hover:scale-105 hover:-translate-y-2 transition-all duration-300 flex items-center gap-3 w-full sm:w-auto justify-center text-lg border border-slate-200 backdrop-blur-md shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
             <BarChart2 className="w-6 h-6 text-indigo-600" />
             MP Portal (Demo)
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-100/50 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
