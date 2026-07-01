@@ -1,0 +1,43 @@
+{
+  "district": "Jaipur",
+  "state": "Rajasthan",
+  "data_sources": [
+    "UDISE+ 2021-22 District Report",
+    "Census 2011 District Census Handbook",
+    "NFHS-5 District Factsheet"
+  ],
+  "metrics": {
+    "education": {
+      "total_schools": 8540,
+      "pupil_teacher_ratio": 25.1,
+      "schools_with_electricity_percent": 96.5,
+      "schools_with_drinking_water_percent": 98.2,
+      "schools_with_functional_girls_toilet_percent": 97.8,
+      "source": "UDISE+ 2021-22"
+    },
+    "health": {
+      "sub_health_centers": 645,
+      "primary_health_centers": 128,
+      "community_health_centers": 35,
+      "institutional_births_percent": 92.4,
+      "children_fully_immunized_percent": 75.8,
+      "source": "NFHS-5 (2019-21)"
+    },
+    "water_and_sanitation": {
+      "households_with_piped_water_percent": 68.3,
+      "households_with_latrine_facility_percent": 84.5,
+      "villages_with_drinking_water_facility_percent": 100,
+      "source": "Census 2011 & Jal Jeevan Mission 2022 Data"
+    },
+    "roads_and_transport": {
+      "villages_connected_by_pucca_road_percent": 91.2,
+      "households_owning_two_wheeler_percent": 45.6,
+      "source": "Census 2011"
+    },
+    "electricity": {
+      "households_with_electricity_percent": 94.8,
+      "villages_electrified_percent": 100,
+      "source": "Census 2011"
+    }
+  }
+}
