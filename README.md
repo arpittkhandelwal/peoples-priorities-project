@@ -20,7 +20,7 @@ The application is built on a modern, edge-ready technology stack designed for h
 - Frontend Architecture: Next.js 14 (App Router) with React Server Components.
 - Styling and Animation: Tailwind CSS with Framer Motion for hardware-accelerated user interfaces.
 - Database and Authentication: Supabase (PostgreSQL) with Row Level Security (RLS).
-- AI Inference: Groq API utilizing the Llama-3.3-70b-versatile model for sub-second, high-throughput NLP tasks.
+- AI Inference: Google Gemini API utilizing the Gemini 1.5 Flash model for sub-second, high-throughput NLP tasks.
 - Geospatial Visualization: React Leaflet integrated with OpenStreetMap tiles.
 
 ## Installation and Setup
@@ -38,7 +38,7 @@ Ensure you have Node.js (v18+) and npm installed on your local development envir
    ```
 3. Duplicate the `.env.example` file and rename it to `.env.local`. Populate the required environment variables:
    ```env
-   GROQ_API_KEY=your_groq_api_key
+   GEMINI_API_KEY=your_gemini_api_key
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
